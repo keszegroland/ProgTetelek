@@ -1,0 +1,78 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ProgTetelekgithub
+{
+
+    class Program
+    {
+        static int sorokszama = 30;
+        static List<int> lista = new List<int>();
+        static void Main(string[] args)
+        {    
+            Random szam = new Random();
+
+            for (int i = 0; i < sorokszama; i++)
+            {
+                lista.Add(szam.Next(1,20));
+            }
+            foreach (var item in lista)
+            {
+                Console.WriteLine(item);
+            }
+            int osszeg=0;
+            int min = 0;
+            int max = 0;
+            osszegtetel(lista, osszeg);
+            mintetel(lista, min);
+            maxtetel(lista, max);           
+
+            Console.ReadKey();
+        }
+
+
+        static int osszegtetel(List<int> lista, int osszeg)
+        {
+            osszeg = 0;
+            for (int i = 0; i < sorokszama; i++)
+            {
+                osszeg += lista[i];
+            }
+            Console.WriteLine("A számok összege: " + osszeg);
+            return osszeg;
+        }
+
+        static int mintetel(List<int> lista, int min)
+        {
+            min = lista[0];
+            for (int i = 0; i < sorokszama; i++)
+            {
+                if (lista[i] < min)
+                {
+                    min = lista[i];
+                }
+            }
+            Console.WriteLine("A minimum érték: " + min);
+
+            return min;
+        }
+
+        static int maxtetel(List<int> lista, int max)
+        {
+            max = lista[0];
+            for (int i = 0; i < sorokszama; i++)
+            {
+                if (lista[i] > max)
+                {
+                    max = lista[i];
+                }
+            }
+            Console.WriteLine("A maximum érték: " + max);
+
+            return max;
+        }
+    }
+}
